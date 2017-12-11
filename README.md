@@ -24,6 +24,7 @@ sudo apt-get install python3-dev libusb-1.0-0-dev libudev-dev
 ```shell
 pip install pythark
 pip install https://github.com/ArkEcosystem/arky/archive/aip11.zip
+pip install logzero
 ```
 
 ## Application Example
