@@ -1,3 +1,4 @@
+from .network import Network
 import requests
 import random
 
@@ -10,12 +11,12 @@ FALLBACKS_DEV_ADDRESSES = []
 FALLBACKS_KAPU_ADDRESSES = []
 
 
-class API:
+class API(Network):
     """
     Class allowing us to interact with the API.
     """
-    def __init__(self, network="main"):
-        self.network = network
+    def __init__(self):
+        self.network = self.set_network()
 
     def get(self, endpoint, **kwargs):
         """ Do a HTTP get request to a specified endpoint (with optionnal parameters).
