@@ -1,4 +1,5 @@
 from .api import API
+from .network import Network
 from .block import Block
 from .account import Account
 from .delegate import Delegate
