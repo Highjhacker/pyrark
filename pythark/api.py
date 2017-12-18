@@ -59,9 +59,22 @@ class API:
             print("Connection error : ", e)
         except requests.exceptions.ReadTimeout as e:
             print("ReadTimeOut error : ", e)
-
-
-
+        except AttributeError:
+            if self.network == "dark":
+                populate_fallback(FALLBACKS_DEV_ADDRESSES, self.network)
+                url = select_random_ip(FALLBACKS_DEV_ADDRESSES) + "/"
+                r = requests.get("{0}{1}".format(url, endpoint), headers=headers_dev, params=payload, timeout=10)
+            elif self.network == "kapu":
+                populate_fallback(FALLBACKS_KAPU_ADDRESSES, self.network)
+                url = select_random_ip(FALLBACKS_KAPU_ADDRESSES) + "/"
+                r = requests.get("{0}{1}".format(url, endpoint), headers=headers_kapu_main, params=payload, timeout=10)
+            else:
+                populate_fallback(FALLBACKS_MAIN_ADDRESSES, self.network)
+                url = select_random_ip(FALLBACKS_MAIN_ADDRESSES) + "/"
+                r = requests.get("{0}{1}".format(url, endpoint), headers=headers_main, params=payload, timeout=10)
+            if r.status_code == 200:
+                return r
+            
 def get_main_network_headers():
     headers = {
         "nethash": "6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988",
