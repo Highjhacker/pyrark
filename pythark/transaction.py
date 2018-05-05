@@ -12,17 +12,17 @@ class Transaction(API):
         :param id: A valid Transaction id.
         :return:
         """
-        resp = self.get("api/transactions/get", id=id)
+        resp = self.request('get', "api/transactions/get", id=id)
         return resp.json()
 
     def get_transactions(self, **kwargs):
         """ Get all transactions.
 
-        :param kwargs: Optionnal parameters. blockId, limit, orderBy, offset, senderPublicKey, vendorField, ownerPublicKey,
+        :param kwargs: Optional parameters. blockId, limit, orderBy, offset, senderPublicKey, vendorField, ownerPublicKey,
         ownerAddress, senderId, recipientId, amount, fee
         :return:
         """
-        resp = self.get("api/transactions", **kwargs)
+        resp = self.request('get', "api/transactions", **kwargs)
         return resp.json()
 
     def get_unconfirmed_transaction(self, id):
@@ -31,14 +31,14 @@ class Transaction(API):
         :param id: A valid Transaction id.
         :return:
         """
-        resp = self.get("api/transactions/unconfirmed/get", id=id)
+        resp = self.request('get', "api/transactions/unconfirmed/get", id=id)
         return resp.json()
 
     def get_unconfirmed_transactions(self, **kwargs):
         """ Get all unconfirmed transactions.
 
-        :param kwargs: Optionnal parameters. senderPublicKey, address
+        :param kwargs: Optional parameters. senderPublicKey, address
         :return:
         """
-        resp = self.get("api/transactions/unconfirmed", **kwargs)
+        resp = self.request('get', "api/transactions/unconfirmed", **kwargs)
         return resp.json()

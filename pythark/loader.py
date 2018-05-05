@@ -13,7 +13,7 @@ class Loader(API):
 
         :return:
         """
-        resp = self.get("api/loader/status")
+        resp = self.request('get', "api/loader/status")
         return resp.json()
 
     def get_sync(self):
@@ -21,7 +21,7 @@ class Loader(API):
 
         :return:
         """
-        resp = self.get("api/loader/status/sync")
+        resp = self.request('get', "api/loader/status/sync")
         return resp.json()
 
     def autoconfigure(self):
@@ -29,5 +29,5 @@ class Loader(API):
 
         :return:
         """
-        resp = self.get("api/loader/autoconfigure")
+        resp = self.request('get', "api/loader/autoconfigure")
         return resp.json()
