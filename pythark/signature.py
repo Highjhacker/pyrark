@@ -11,7 +11,7 @@ class Signature(API):
 
         :return:
         """
-        resp = self.get("api/signatures/fee")
+        resp = self.request('get', "api/signatures/fee")
         return resp.json()
 
     def get_address_signature_fee(self, address):
@@ -20,5 +20,5 @@ class Signature(API):
         :param address: A valid Ark address.
         :return:
         """
-        resp = self.get("api/signatures/fee", address=address)
+        resp = self.request('get', "api/signatures/fee", address=address)
         return resp.json()

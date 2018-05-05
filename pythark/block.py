@@ -12,17 +12,17 @@ class Block(API):
         :param id: Valid Block ID.
         :return:
         """
-        resp = self.get("api/blocks/get", id=id)
+        resp = self.request('get', "api/blocks/get", id=id)
         return resp.json()
 
     def get_blocks(self, **kwargs):
         """ Get all blocks.
 
-        :param kwargs: Optionnal parameters. limit, orderBy, offset, generatorPublicKey, totalAmount, totalFee, reward,
+        :param kwargs: Optional parameters. limit, orderBy, offset, generatorPublicKey, totalAmount, totalFee, reward,
         previousBlock, height
         :return:
         """
-        resp = self.get("api/blocks", **kwargs)
+        resp = self.request('get', "api/blocks", **kwargs)
         return resp.json()
 
     def get_height(self):
@@ -30,7 +30,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getHeight")
+        resp = self.request('get', "api/blocks/getHeight")
         return resp.json()
 
     def get_epoch(self):
@@ -38,7 +38,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getEpoch")
+        resp = self.request('get', "api/blocks/getEpoch")
         return resp.json()
 
     def get_nethash(self):
@@ -46,7 +46,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getNethash")
+        resp = self.request('get', "api/blocks/getNethash")
         return resp.json()
 
     def get_fee(self):
@@ -54,7 +54,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getFee")
+        resp = self.request('get', "api/blocks/getFee")
         return resp.json()
 
     def get_fees(self):
@@ -62,7 +62,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getFees")
+        resp = self.request('get', "api/blocks/getFees")
         return resp.json()
 
     def get_milestone(self):
@@ -70,7 +70,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getMilestone")
+        resp = self.request('get', "api/blocks/getMilestone")
         return resp.json()
 
     def get_reward(self):
@@ -78,7 +78,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getReward")
+        resp = self.request('get', "api/blocks/getReward")
         return resp.json()
 
     def get_supply(self):
@@ -86,7 +86,7 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getSupply")
+        resp = self.request('get', "api/blocks/getSupply")
         return resp.json()
 
     def get_status(self):
@@ -94,5 +94,5 @@ class Block(API):
 
         :return:
         """
-        resp = self.get("api/blocks/getStatus")
+        resp = self.request('get', "api/blocks/getStatus")
         return resp.json()

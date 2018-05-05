@@ -19,7 +19,7 @@ class Transport(API):
 
         :return:
         """
-        resp = self.get("peer/list")
+        resp = self.request('get', "peer/list")
         return resp.json()
 
     def get_common_blocks(self, ids):
@@ -28,7 +28,7 @@ class Transport(API):
         :param ids: List of Block ids.
         :return:
         """
-        resp = self.get("peer/blocks/common", ids=','.join(ids))
+        resp = self.request('get', "peer/blocks/common", ids=','.join(ids))
         return resp.json()
 
     def get_blocks(self, address):
@@ -37,7 +37,7 @@ class Transport(API):
         :param address: A valid Ark address.
         :return:
         """
-        resp = self.get("peer/blocks", address=address)
+        resp = self.request('get', "peer/blocks", address=address)
         return resp.json()
 
     def get_block(self, address):
@@ -47,7 +47,7 @@ class Transport(API):
         :param address: A valid Ark address.
         :return:
         """
-        resp = self.get("peer/block", address=address)
+        resp = self.request('get', "peer/block", address=address)
         return resp.json()
 
     def get_transactions(self):
@@ -55,7 +55,7 @@ class Transport(API):
 
         :return:
         """
-        resp = self.get("peer/transactions")
+        resp = self.request('get', "peer/transactions")
         return resp.json()
 
     def post_transaction(self, network, recipientId, amount, secret, vendorField="", secondSecret=""):
@@ -65,8 +65,8 @@ class Transport(API):
         :param recipientId: A valid Ark address.
         :param amount: Amount of currency we want to transfer.
         :param secret: BIP39 seedpass.
-        :param vendorField: Optionnal vendorField.
-        :param secondSecret: Optionnal BIP39 second seedpass.
+        :param vendorField: Optional vendorField.
+        :param secondSecret: Optional BIP39 second seedpass.
         :return:
         """
         rest.use(network)
@@ -77,7 +77,7 @@ class Transport(API):
     def post_transaction_bis(self, recipientId, amount, secret, secondSecret="", vendorField=None):
         transactions = []
 
-        resp = self.post("peer/transactions", recipientId=recipientId, amount=amount, secret=secret, secondSecret=secondSecret, vendorField=vendorField)
+        resp = self.request('post', "peer/transactions", recipientId=recipientId, amount=amount, secret=secret, secondSecret=secondSecret, vendorField=vendorField)
         return resp.json()
 
     def get_transactions_from_ids(self, ids):
@@ -86,7 +86,7 @@ class Transport(API):
         :param ids: A list of valid Transaction id
         :return:
         """
-        resp = self.get("peer/transactionsFromIds", ids=','.join(ids))
+        resp = self.request('get', "peer/transactionsFromIds", ids=','.join(ids))
         return resp.json()
 
     def get_height(self):
@@ -94,7 +94,7 @@ class Transport(API):
 
         :return:
         """
-        resp = self.get("peer/height")
+        resp = self.request('get', "peer/height")
         return resp.json()
 
     def get_status(self):
@@ -102,5 +102,5 @@ class Transport(API):
 
         :return:
         """
-        resp = self.get("peer/status")
+        resp = self.request('get', "peer/status")
         return resp.json()

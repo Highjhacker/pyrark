@@ -12,7 +12,7 @@ class MultiSignature(API):
         :param publicKey: A valid Ark publicKey.
         :return:
         """
-        resp = self.get("api/multisignatures/pending", publicKey=publicKey)
+        resp = self.request('get', "api/multisignatures/pending", publicKey=publicKey)
         return resp.json()
 
     def get_accounts(self, publicKey):
@@ -22,5 +22,5 @@ class MultiSignature(API):
         :param publicKey: A valid Ark publicKey.
         :return:
         """
-        resp = self.get("api/multisignatures/accounts", publicKey=publicKey)
+        resp = self.request('get', "api/multisignatures/accounts", publicKey=publicKey)
         return resp.json()

@@ -223,8 +223,8 @@ resp = transport.post_transaction(
         "DDvQqwqPXKd5P8dLAroFsnKR5Q3tKUtvnp", # RecipientAddress
         1000000, # Amount
         "firstPassphrase", # First passphrase, mandatory
-        "vendorField", # Vendor field, optionnal
-        "secondPassphrase") # Second passphrase, optionnal
+        "vendorField", # Vendor field, optional
+        "secondPassphrase") # Second passphrase, optional
 ```
 
 ## TODOS

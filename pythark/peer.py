@@ -13,7 +13,7 @@ class Peer(API):
         :param port: Valid port of the peer.
         :return:
         """
-        resp = self.get("api/peers/get", ip=ip, port=port)
+        resp = self.request('get', "api/peers/get", ip=ip, port=port)
         return resp.json()
 
     def get_peers(self):
@@ -21,7 +21,7 @@ class Peer(API):
 
         :return:
         """
-        resp = self.get("api/peers")
+        resp = self.request('get', "api/peers")
         return resp.json()
 
     def get_peer_version(self):
@@ -29,5 +29,5 @@ class Peer(API):
 
         :return:
         """
-        resp = self.get("api/peers/version")
+        resp = self.request('get', "api/peers/version")
         return resp.json()
